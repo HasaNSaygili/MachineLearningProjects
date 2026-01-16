@@ -7,7 +7,8 @@ Bu depo, veri bilimi ve makine öğrenmesi (ML) alanındaki gelişimimi, uygulad
 | Proje Adı | Açıklama | Anahtar Teknolojiler |
 | :--- | :--- | :--- |
 | **House Rent Prediction** | Ev özelliklerine göre kira tahmini yapan model. | Python, LSTM, Plotly |
-| *(Yeni Proje)* | *(Proje açıklaması buraya gelecek)* | *(Kullanılan araçlar)* |
+| **Electricity Demand Forecasting** | Zaman serisi verileriyle gelecekteki enerji talebini tahmin eden model. | Python, XGBoost, Scikit-learn |
+
 
 ---
 
