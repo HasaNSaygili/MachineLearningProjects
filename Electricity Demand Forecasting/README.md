@@ -1,84 +1,37 @@
-🚀 Electricity Demand Forecasting with XGBoost
-Bu proje, geçmiş enerji tüketim verilerini kullanarak gelecekteki elektrik talebini tahmin etmek amacıyla geliştirilmiş bir zaman serisi tahminleme (Time-Series Forecasting) çalışmasıdır. Projede, verilerin temizlenmesi, zaman serisi özelliklerinin çıkarılması ve XGBoost regresyon modeli ile yüksek doğruluklu tahminlerin yapılması süreçleri işlenmiştir.
+# ⚡ Electricity Demand Forecasting with XGBoost
 
-📊 Proje Özeti
-Elektrik talebi tahmini, enerji şebekelerinin yönetimi ve maliyet optimizasyonu için kritiktir. Bu projede:
+Bu proje, geçmiş enerji tüketim verilerini, sıcaklık ve nem gibi dış faktörlerle birleştirerek gelecekteki elektrik talebini tahmin etmek amacıyla geliştirilmiştir. Zaman serisi analizi ve güçlü bir makine öğrenmesi algoritması olan **XGBoost** kullanılarak yüksek doğruluklu sonuçlar elde edilmiştir.
 
-Veri Kaynağı: Saatlik bazda elektrik talebi, sıcaklık ve nem verilerini içeren zaman serisi veri seti.
+## 🚀 Proje Genel Bakış
+Elektrik dağıtım şirketleri ve enerji yöneticileri için talebi önceden bilmek, maliyet tasarrufu ve operasyonel verimlilik sağlar. Bu çalışma:
+- Zaman serisi verilerindeki eksik değerleri akıllı yöntemlerle doldurur.
+- Tarih verisinden mevsimsel özellikler (saat, gün, ay vb.) türetir.
+- XGBoost Regressor kullanarak gelecekteki talebi tahmin eder.
 
-Model: Gradient Boosting tabanlı güçlü bir algoritma olan XGBoost Regressor.
+## 🛠️ Teknik Araçlar
+- **Dil:** Python
+- **Kütüphaneler:** `pandas`, `numpy`, `xgboost`, `matplotlib`, `scikit-learn`, `joblib`
+- **Algoritma:** XGBoost (Extreme Gradient Boosting)
 
-Hedef: Mevsimsellik ve trendleri yakalayarak düşük hata payı (RMSE/MAE) ile tahmin üretmek.
+## 📊 Veri Hazırlama ve Özellik Mühendisliği
+Proje akışında aşağıdaki veri ön işleme adımları uygulanmıştır:
+- **Eksik Veri Yönetimi:** `ffill`, `bfill` ve zaman bazlı `interpolate` yöntemleri kullanılarak veri bütünlüğü sağlandı.
+- **Feature Engineering:** Modelin zamanı anlaması için `hour`, `dayofweek`, `month`, `year` ve `dayofyear` özellikleri oluşturuldu.
 
-🛠️ Kullanılan Teknolojiler ve Kütüphaneler
-Python 3.x
+## 📈 Model Performansı
+Modelin başarısını ölçmek için kullanılan hata metrikleri:
+- **RMSE (Root Mean Squared Error):** 174.82
+- **MAE (Mean Absolute Error):** 123.47
 
-Pandas & NumPy: Veri işleme ve temizleme.
 
-Matplotlib & Seaborn: Veri görselleştirme.
 
-XGBoost: Makine öğrenmesi modeli.
+### Tahmin Grafiği
+Modelin test verisi üzerindeki performansı (Gerçek vs Tahmin):
 
-Scikit-learn: Model değerlendirme metrikleri (RMSE, MAE).
 
-Joblib: Eğitilmiş modelin kaydedilmesi ve yüklenmesi.
 
-🚀 Proje Adımları
-1. Veri Ön İşleme (Data Preprocessing)
-Eksik veriler (NaN) zaman serisinin doğasına uygun yöntemlerle doldurulmuştur:
+## 📂 Dosyalar
+- `notebook.ipynb`: Tüm kodları ve veri analizini içeren çalışma dosyası.
+- `electricity_demand_xgb_model.pkl`: Eğitilmiş, kullanıma hazır model dosyası.
 
-Zaman bileşenleri için ffill() (ileri yönlü doldurma).
-
-Hava durumu verileri için bfill() (geri yönlü doldurma).
-
-Talep verisi için interpolate(method='time') (zaman bazlı interpolasyon).
-
-2. Özellik Mühendisliği (Feature Engineering)
-Zaman damgalarından modelin öğrenebileceği sayısal özellikler türetilmiştir:
-
-Saat (Hour)
-
-Haftanın Günü (Day of Week)
-
-Ay (Month)
-
-Yıl (Year)
-
-Yılın Günü (Day of Year)
-
-3. Model Eğitimi
-XGBoost modeli aşağıdaki parametrelerle yapılandırılmıştır:
-
-n_estimators = 1000
-
-learning_rate = 0.01
-
-early_stopping_rounds = 50 (Aşırı öğrenmeyi önlemek için).
-
-4. Sonuçlar ve Performans
-Modelin test verisi üzerindeki başarısı şu metriklerle doğrulanmıştır:
-
-XGBoost RMSE: 174.82
-
-XGBoost MAE: 123.47
-
-📂 Dosya Yapısı
-notebook.ipynb: Tüm analiz ve modelleme kodlarını içeren Jupyter Notebook.
-
-electricity_demand_xgb_model.pkl: Eğitilmiş ve kullanıma hazır XGBoost modeli.
-
-README.md: Proje açıklaması.
-
-💻 Nasıl Kullanılır?
-Repoyu bilgisayarınıza indirin (clone).
-
-Gerekli kütüphaneleri kurun: pip install xgboost pandas scikit-learn joblib matplotlib.
-
-Modeli yükleyerek tahmin yapmaya başlayın:
-
-Python
-
-import joblib
-model = joblib.load('electricity_demand_xgb_model.pkl')
-# Yeni verilerinizle tahmin yapın
-# predictions = model.predict(new_data)
+   
